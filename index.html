@@ -3,292 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABHISHEK KUMAR - AI & Full-Stack Developer Resume</title>
-    
+    <title>Abhishek Kumar Resume</title>
     <style>
+        :root {
+            --ink: #1f2a22;
+            --olive: #546f3f;
+            --olive-dark: #475f35;
+            --olive-soft: #6c8453;
+            --sage: #a9bdc5;
+            --sage-light: #dbe4e8;
+            --paper: #ffffff;
+            --page: #f4f6f3;
+            --line: #d7ddd1;
+            --chip: #ffffff;
+            --chip-line: #95a58a;
+            --accent: #f4a300;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f1f1f1;
-            color: #333;
+        html, body {
+            margin: 0;
+            min-height: 100%;
+            background: var(--page);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .container {
-            max-width: 8.5in;
-            min-height: 11in;
-            margin: 20px auto;
-            display: flex;
-            background: white;
-            border: 2px solid #667eea;
-            border-radius: 6px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        body {
+            padding: 16px;
+            overflow-x: hidden;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        .resume-page {
+            width: min(900px, 100%);
+            margin: 0 auto;
+            background: var(--paper);
+            box-shadow: 0 10px 40px rgba(31, 42, 34, 0.10);
             overflow: hidden;
         }
 
-        /* Sidebar */
-        .sidebar {
-            width: 28%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px 15px;
+        .resume-shell {
+            width: 100%;
+            margin: 0 auto;
         }
 
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 12px;
+        .download-btn {
+            position: fixed;
+            left: 50%;
+            bottom: 16px;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            padding: 12px 18px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--olive);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            box-shadow: 0 8px 24px rgba(31, 42, 34, 0.22);
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: var(--olive-dark);
+        }
+
+        .top-band {
+            height: 36px;
+            background: linear-gradient(90deg, var(--sage-light) 0 26%, #b4c7ce 26% 100%);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 18px 12px 16px;
         }
 
         .name {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
+            margin: 0;
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 0.96;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            color: #202620;
+            text-wrap: balance;
         }
 
-        .role {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 12px;
-            opacity: 0.9;
+        .name strong {
+            color: #5b6c43;
+            font-weight: 300;
         }
 
-        .sidebar h2 {
+        .contact {
+            margin-top: 4px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 1.35;
+            color: #222;
+            min-width: 230px;
+        }
+
+        .contact a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 2px;
+            word-break: break-word;
+        }
+
+        .icon {
+            width: 14px;
+            text-align: center;
+            color: #6e7b6a;
             font-size: 13px;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 4px;
+            flex: 0 0 auto;
         }
 
-        .contact-info li, .skill-list li {
-            font-size: 10px;
-            margin-bottom: 5px;
+        .summary {
+            background: var(--olive);
+            color: #fff;
+            padding: 18px 18px 20px;
         }
 
-        .skill-category {
-            margin-bottom: 12px;
+        .section-title {
+            margin: 0 0 10px;
+            color: #455b36;
+            font-size: 18px;
+            line-height: 1.1;
+            font-weight: 700;
         }
 
-        /* Main Content */
-        .main {
-            width: 72%;
-            padding: 20px;
+        .summary .section-title {
+            color: #fff;
+        }
+
+        .summary p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+
+        .content {
+            padding: 12px 16px 18px;
+        }
+
+        .skills {
+            padding: 4px 0 4px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 28px;
+            padding: 3px 10px;
+            border: 1px solid var(--chip-line);
+            border-radius: 7px;
+            background: var(--chip);
+            font-size: 14px;
+            line-height: 1;
+            color: #111;
+            white-space: nowrap;
         }
 
         .section {
-            margin-bottom: 15px;
+            margin-top: 18px;
         }
 
-        .section h2 {
-            font-size: 14px;
-            color: #667eea;
-            text-transform: uppercase;
-            border-bottom: 2px solid #667eea;
-            margin-bottom: 6px;
-            padding-bottom: 3px;
+        .education-item {
+            margin-bottom: 12px;
         }
 
-        .summary-text {
-            font-size: 11px;
-            color: #555;
-            line-height: 1.4;
+        .institution {
+            margin: 0 0 2px;
+            font-size: 16px;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #111;
         }
 
-        .item h3 {
+        .degree {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 22px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: var(--olive);
+            color: #fff;
             font-size: 12px;
-            font-weight: bold;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
         }
 
-        .item p {
-            font-size: 10px;
-            margin-bottom: 2px;
+        .location {
+            font-size: 13px;
+            color: #707b71;
         }
 
-        ul li {
-            font-size: 11px;
+        .divider {
+            margin: 10px 0 0;
+            border: 0;
+            border-top: 4px solid var(--olive);
+        }
+
+        .experience {
+            position: relative;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            left: 197px;
+            top: 52px;
+            bottom: 18px;
+            border-left: 2px dotted #738a66;
+            pointer-events: none;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 196px 1fr;
+            gap: 18px;
+            align-items: start;
+            padding: 10px 0 12px;
+            position: relative;
+        }
+
+        .company-col {
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .company-col::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 9px;
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: var(--olive);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 1px var(--olive);
+        }
+
+        .company {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .role {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .experience-item .pill {
+            margin-top: 12px;
+        }
+
+        .bullets {
+            margin: 8px 0 0 18px;
+            padding: 0;
+            font-size: 15px;
+            line-height: 1.48;
+        }
+
+        .bullets li {
+            margin: 0 0 7px;
+        }
+
+        .link-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 14px;
+            line-height: 1.42;
+        }
+
+        .link-list li {
             margin-bottom: 4px;
-            margin-left: 15px;
         }
 
-        ul li::before {
-            content: "• ";
-            color: #667eea;
-            font-weight: bold;
+        .link-list a {
+            color: #1b51b8;
+        }
+
+        .projects .link-list li {
+            margin-bottom: 7px;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 0;
+            }
+
+            .resume-shell {
+                width: 100vw;
+                overflow: hidden;
+            }
+
+            .resume-page {
+                margin: 0;
+                box-shadow: none;
+            }
         }
 
         @media print {
-            body { background: white; }
-            .container { box-shadow: none; border: none; }
+            body {
+                padding: 0;
+                background: #fff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .resume-page {
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .download-btn {
+                display: none;
+            }
+
+            .top-band {
+                height: 24px;
+            }
         }
     </style>
-
 </head>
 <body>
+    <button class="download-btn" type="button" onclick="window.print()">Download Resume</button>
+    <div class="resume-shell" id="resumeShell">
+    <main class="resume-page" id="resumePage">
+        <div class="top-band"></div>
 
-<div class="container">
+        <header class="header">
+            <h1 class="name">Abhishek <strong>Kumar</strong></h1>
+            <div class="contact">
+                <div class="contact-row"><a href="mailto:abhi3kumar11@gmail.com">abhi3kumar11@gmail.com</a><span class="icon">✉</span></div>
+                <div class="contact-row"><a href="https://www.linkedin.com/in/abhi3kumar11" target="_blank" rel="noopener noreferrer">linkedin.com/in/abhi3kumar11</a><span class="icon">in</span></div>
+                <div class="contact-row"><a href="https://github.com/abhi3kumar11" target="_blank" rel="noopener noreferrer">https://github.com/abhi3kumar11</a><span class="icon">◔</span></div>
+                <div class="contact-row"><span>Purnea, Bihar, 854301</span><span class="icon">📍</span></div>
+            </div>
+        </header>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <img src="profile.jpg" class="profile-pic">
-
-        <div class="name">ABHISHEK KUMAR</div>
-        <div class="role">AI & Full-Stack Developer</div>
-
-        <h2>Contact</h2>
-        <ul class="contact-info">
-            <li>📞 8789373675</li>
-            <li>✉️ <a href="mailto:abhi3kumar11@gmail.com" style="color:white;">abhi3kumar11@gmail.com</a></li>
-            <li>📍 Purnea, Bihar, India – 854301</li>
-            <li>🔗 <a href="https://linkedin.com/in/abhi3kumar11" style="color:white;">LinkedIn: https://linkedin.com/in/abhi3kumar11</a></li>
-            <li>💻 <a href="https://github.com/abhi3kumar11" style="color:white;">GitHub: https://github.com/abhi3kumar11</a></li>
-        </ul>
-
-        <h2>Skills</h2>
-
-        <div class="skill-category">
-            <h4>Programming</h4>
-            <ul class="skill-list">
-                <li>Python (Advanced)</li>
-                <li>C, C++</li>
-                <li>Java (Basic)</li>
-                <li>JavaScript (ES6+)</li>
-            </ul>
-        </div>
-
-        <div class="skill-category">
-            <h4>Frontend</h4>
-            <ul class="skill-list">
-                <li>HTML, CSS, Bootstrap</li>
-                <li>React.js</li>
-                <li>Vue.js</li>
-                <li>Responsive UI/UX</li>
-            </ul>
-        </div>
-
-        <div class="skill-category">
-            <h4>Backend</h4>
-            <ul class="skill-list">
-                <li>Flask</li>
-                <li>Node.js</li>
-                <li>Express.js</li>
-                <li>REST APIs</li>
-                <li>API Integration</li>
-            </ul>
-        </div>
-
-        <div class="skill-category">
-            <h4>Databases</h4>
-            <ul class="skill-list">
-                <li>SQL</li>
-                <li>SQLAlchemy</li>
-                <li>RDBMS</li>
-                <li>DBMS</li>
-            </ul>
-        </div>
-
-        <div class="skill-category">
-            <h4>AI & Data Science</h4>
-            <ul class="skill-list">
-                <li>Machine Learning</li>
-                <li>Data Analysis</li>
-                <li>NLP</li>
-                <li>Deep Learning (Basics)</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main">
-
-        <div class="section">
-            <h2>Summary</h2>
-            <p class="summary-text">
-                Adaptable and quick-learning AI & Full-Stack Developer skilled in building scalable web apps, integrating APIs,
-                developing AI-powered tools, and designing modern UI/UX. Experienced with Python, Flask, Node.js, SQL,
-                React, Vue, and cloud deployment. Passionate about real-time systems, open-source tools, and AI-driven automation.
+        <section class="summary">
+            <h2 class="section-title">Summary</h2>
+            <p>
+                AI and Full-Stack Developer with hands-on experience in software development, AI-powered applications,
+                real-time platforms, e-commerce websites, developer tools, and scalable web applications. Founder of
+                Utooly.com, an online platform with 100+ tools, and RizzCall, a real-time social communication platform.
+                Also developed Close One, an e-commerce platform, along with other production-ready applications.
+                Experienced in taking products from concept to deployment, including full-stack development, API integration,
+                database management, AI integration, UI/UX development, automation, and cloud deployment.
             </p>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2>Education</h2>
+        <section class="content">
+            <section class="skills section">
+                <h2 class="section-title">Skills</h2>
+                <div class="chips">
+                    <span class="chip">Python</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">TypeScript</span>
+                    <span class="chip">C</span>
+                    <span class="chip">C++</span>
+                    <span class="chip">Java</span>
+                    <span class="chip">React.js</span>
+                    <span class="chip">Vue.js</span>
+                    <span class="chip">Next.js</span>
+                    <span class="chip">HTML5</span>
+                    <span class="chip">CSS3</span>
+                    <span class="chip">Tailwind CSS</span>
+                    <span class="chip">Bootstrap</span>
+                    <span class="chip">Flask</span>
+                    <span class="chip">Node.js</span>
+                    <span class="chip">Express.js</span>
+                    <span class="chip">REST APIs</span>
+                    <span class="chip">WebSockets</span>
+                    <span class="chip">SQL</span>
+                    <span class="chip">SQLAlchemy</span>
+                    <span class="chip">MongoDB</span>
+                    <span class="chip">Machine Learning</span>
+                    <span class="chip">NLP</span>
+                    <span class="chip">OpenAI APIs</span>
+                    <span class="chip">Git</span>
+                    <span class="chip">CI/CD</span>
+                    <span class="chip">Render</span>
+                    <span class="chip">Vercel</span>
+                    <span class="chip">JWT</span>
+                    <span class="chip">bcrypt</span>
+                    <span class="chip">XSS/CSRF protection</span>
+                </div>
+            </section>
 
-            <div class="item">
-                <h3>B.Tech – Computer Science & Engineering (AI)</h3>
-                <p>Purnea College of Engineering – Bihar Engineering University</p>
-                <p>Expected: Sept 2027</p>
-            </div>
+            <section class="education section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <p class="institution">Purnea College of Engineering</p>
+                    <p class="degree">B.Tech - Computer Science &amp; Engineering (AI)</p>
+                    <div class="meta-row">
+                        <span class="pill">2027</span>
+                        <span class="location">Bihar</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <p class="institution">Indian Institute of Technology Madras</p>
+                    <p class="degree">BS - Data Science &amp; Applications</p>
+                </div>
+                <hr class="divider">
+            </section>
 
-            <div class="item">
-                <h3>B.Sc – Data Science & Applications</h3>
-                <p>Indian Institute of Technology Madras</p>
-                <p>Expected: Dec 2027</p>
-            </div>
-        </div>
+            <section class="experience section">
+                <h2 class="section-title">Experience</h2>
 
-        <div class="section">
-            <h2>Experience & Achievements</h2>
-            <ul>
-            <li>Developed and deployed multiple full-stack web applications using Flask, Node.js, Express.js, SQL, HTML, CSS, Bootstrap, and JavaScript.</li>
-            <li>Built scalable backend APIs with optimized database queries using SQL & SQLAlchemy, improving performance and response time.</li>
-            <li>Designed responsive, modern UI components using React.js, Vue.js, and Bootstrap for seamless cross-device experience.</li>
-            <li>Integrated third-party APIs including authentication, AI APIs, and web scraping APIs to extend application functionality.</li>
-            <li>Developed real-time applications using WebSockets for chat and instant communication features.</li>
-            <li>Implemented efficient RDBMS schemas, improved indexing, and normalized databases for optimized data storage and retrieval.</li>
-            <li>Created machine learning pipelines for prediction, classification, and NLP-based text processing tasks.</li>
-            <li>Built AI-powered tools such as chatbots, summarizers, and automation systems using Python and OpenAI APIs.</li>
-            <li>Led and coordinated a team of 3–4 members for building, testing, and deploying full-stack applications.</li>
-            <li>Successfully delivered live projects including LUSI AI, FreePremiumTools.com, Random Chat Room, Quiz Master V1, and AI Notes Summarizer.</li>
-            <li>Deployed applications on Render, Vercel, and GitHub Pages, implementing CI/CD workflows for smoother updates.</li>
-            <li>Recognized for rapid learning ability, analytical thinking, and delivering high-quality features under deadlines.</li>
-            </ul>
-        </div>
+                <div class="experience-item">
+                    <div class="company-col">
+                        <p class="company">Utooly.com</p>
+                        <div class="pill">Jun 2025 - Present</div>
+                    </div>
+                    <div>
+                        <p class="role">Founder &amp; Lead Developer</p>
+                        <ul class="bullets">
+                            <li>Built Utooly, an all-in-one platform with 100+ AI, developer, PDF, image, SEO, and productivity tools.</li>
+                            <li>Led full-stack development, automation workflows, and deployment pipelines.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <div class="section">
-            <h2>Projects</h2>
+                <div class="experience-item">
+                    <div class="company-col">
+                        <p class="company">CloseOne.in</p>
+                        <div class="pill">Jan 2026 - Present</div>
+                    </div>
+                    <div>
+                        <p class="role">Founder</p>
+                        <ul class="bullets">
+                            <li>Developed and deployed a responsive e-commerce platform for online product sales.</li>
+                            <li>Built product pages and streamlined the online shopping experience.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="item">
-                <h3>LUSI AI – Open-Source Chat Assistant</h3>
-                    <p><a href="https://lusiai.onrender.com">Live: https://lusiai.onrender.com</a> </p>
-            </div>
+                <div class="experience-item">
+                    <div class="company-col">
+                        <p class="company">RizzCall.com</p>
+                        <div class="pill">Sep 2026 - Present</div>
+                    </div>
+                    <div>
+                        <p class="role">Founder &amp; Lead Developer</p>
+                        <ul class="bullets">
+                            <li>Founded and developed RizzCall, a real-time social communication platform for casual conversations.</li>
+                            <li>Built core messaging, backend services, and responsive user interfaces.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="item">
-                <h3>Random Chat Room – Real-Time Chat App</h3>
-                <p><a href="https://rjchat.onrender.com">Live: https://rjchat.onrender.com</a></p>
-            </div>
+                <div class="experience-item">
+                    <div class="company-col">
+                        <p class="company">Codec Technologies Pvt. Ltd.</p>
+                        <div class="pill">Apr 2026 - May 2026</div>
+                    </div>
+                    <div>
+                        <p class="role">Python Developer Intern</p>
+                        <ul class="bullets">
+                            <li>Developed Python automation scripts and data-processing solutions for internal workflows.</li>
+                            <li>Worked on debugging, testing, and data visualization.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="item">
-                <h3>FreePremiumTools.com – 100+ Tools</h3>
-                <p><a href="https://freepremiumtools.com">Live: https://freepremiumtools.com</a></p>
-            </div>
-            
+                <hr class="divider">
+            </section>
 
-            <div class="item">
-                <h3>Quiz Master V1 – Flask Quiz System</h3>
-            </div>
-            <br>
-            <div class="item">
-                <h3>AI Notes Summarizer – PDF/Text/Image → Notes</h3>
-            </div>
-            <br>
-            <div class="item">
-    <h3>Hospital Management System – Full-Stack Web Application</h3>
-     
-</div>
+            <section class="section">
+                <h2 class="section-title">Certifications</h2>
+                <ul class="link-list">
+                    <li><a href="#">Google AI Essentials</a></li>
+                    <li><a href="#">What is the Metaverse?</a></li>
+                    <li>Foundational Level Completion in Programming &amp; Data Science</li>
+                    <li>Build Your Own Generative AI Model</li>
+                    <li>Web Development</li>
+                    <li>Introduction to C, CSS, JavaScript, HTML</li>
+                    <li>CPA: Programming Essentials in C++</li>
+                </ul>
+            </section>
 
-
-        </div>
-
+            <section class="section projects">
+                <h2 class="section-title">Projects</h2>
+                <ul class="link-list">
+                    <li><a href="#">Utooly.com</a>: Consolidated over 100 online tools under the Utooly brand, enhancing user experience and accessibility.</li>
+                    <li><a href="#">CloseOne.in</a>: Developed an e-commerce platform for online product sales with a responsive shopping experience.</li>
+                    <li><a href="#">RizzCall.com</a>: Built a real-time social communication platform with live messaging and interactive user features.</li>
+                    <li><a href="#">TechFest</a>: Developed an event management platform that streamlined registrations for over 500 participants.</li>
+                    <li><a href="#">LUSI AI</a>: Created an open-source AI chatbot featuring real-time communication capabilities.</li>
+                    <li><a href="#">Random Chat Room</a>: Built a real-time chat application utilizing WebSockets for instant messaging.</li>
+                    <li><a href="#">Quiz Master V1</a>: Developed a Flask-based adaptive quiz system designed to personalize learning.</li>
+                    <li><a href="#">AI Notes Summarizer</a>: Engineered a tool to convert PDF, text, and image inputs into structured notes.</li>
+                    <li><a href="#">Hospital Management System</a>: Developed a full-stack web application for managing hospital operations.</li>
+                </ul>
+            </section>
+        </section>
+    </main>
     </div>
-</div>
 
+    <script>
+        (() => {
+            const page = document.getElementById('resumePage');
+            const shell = document.getElementById('resumeShell');
+            const mobileQuery = window.matchMedia('(max-width: 760px)');
+            const baseWidth = 900;
+
+            function updateScale() {
+                if (mobileQuery.matches) {
+                    const scale = Math.min(1, window.innerWidth / baseWidth);
+                    page.style.width = baseWidth + 'px';
+                    page.style.transformOrigin = 'top left';
+                    page.style.transform = `scale(${scale})`;
+                    shell.style.height = (page.offsetHeight * scale) + 'px';
+                    shell.style.width = '100vw';
+                } else {
+                    page.style.width = '';
+                    page.style.transform = '';
+                    page.style.transformOrigin = '';
+                    shell.style.height = '';
+                    shell.style.width = '';
+                }
+            }
+
+            window.addEventListener('resize', updateScale, { passive: true });
+            mobileQuery.addEventListener('change', updateScale);
+            document.addEventListener('DOMContentLoaded', updateScale);
+            updateScale();
+        })();
+    </script>
 </body>
 </html>
