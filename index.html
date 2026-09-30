@@ -364,38 +364,56 @@
                 print-color-adjust: exact;
             }
 
+            .resume-shell {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+
             .resume-page {
-                width: 100%;
+                width: 900px !important;
+                margin: 0 auto !important;
+                transform: none !important;
+                transform-origin: top left !important;
                 box-shadow: none;
             }
 
             .header {
-                padding: 16px 18px 10px 16px;
+                padding: 14px 18px 8px 16px;
                 gap: 20px;
             }
 
             .summary {
-                padding: 15px 18px 17px;
+                padding: 13px 18px 14px;
             }
 
             .content {
-                padding: 10px 16px 14px;
+                padding: 8px 16px 12px;
             }
 
             .section {
-                margin-top: 8px;
-            }
-
-            .section-title {
-                margin-bottom: 6px;
-            }
-
-            .divider {
                 margin-top: 6px;
             }
 
+            .section-title {
+                margin-bottom: 4px;
+            }
+
+            .divider {
+                margin-top: 4px;
+            }
+
             .experience-item {
-                padding: 7px 0 8px;
+                padding: 6px 0 7px;
+            }
+
+            .bullets {
+                margin-top: 6px;
+                line-height: 1.36;
+            }
+
+            .link-list li {
+                margin-bottom: 2px;
             }
 
             .download-btn {
@@ -587,6 +605,20 @@
             const mobileQuery = window.matchMedia('(max-width: 760px)');
             const baseWidth = 900;
 
+            function resetForPrint() {
+                page.style.width = '';
+                page.style.transform = '';
+                page.style.transformOrigin = '';
+                shell.style.height = '';
+                shell.style.width = '';
+            }
+
+            function restoreMobileScale() {
+                if (mobileQuery.matches) {
+                    updateScale();
+                }
+            }
+
             function updateScale() {
                 if (mobileQuery.matches) {
                     const scale = Math.min(1, window.innerWidth / baseWidth);
@@ -606,6 +638,8 @@
 
             window.addEventListener('resize', updateScale, { passive: true });
             mobileQuery.addEventListener('change', updateScale);
+            window.addEventListener('beforeprint', resetForPrint);
+            window.addEventListener('afterprint', restoreMobileScale);
             document.addEventListener('DOMContentLoaded', updateScale);
             updateScale();
         })();
