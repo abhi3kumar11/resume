@@ -13,11 +13,11 @@ This is a responsive resume website built as a single static HTML page. It prese
 - Responsive styling with a polished header, timeline-style experience section, and skill chips
 
 ## Files
-- `resume  html.html` - main resume page
+- `index.html` - main resume page
 - `Abhishek_Kumar_Resume.pdf` - resume PDF file used for download/reference
 
 ## How to Use
-1. Open `resume  html.html` in a browser.
+1. Open `index.html` in a browser.
 2. Use the download button at the bottom to export the resume using print/save as PDF.
 3. Open the live site at the Netlify link above to view the deployed version.
 
